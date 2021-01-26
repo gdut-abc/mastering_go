@@ -1,3 +1,9 @@
+# 工作相关的技术点(重要且紧急)
+* jaeger各个组件的源码分析
+  * jaeger-collector
+  * jaeger-ingester
+  * jaeger-client-go
+# 技术提升(重要不紧急)
 * 搞清楚grpc的用法
 * 搞清楚etcd的用法
 * 搞清楚如何基于etcd实现grpc的负载均衡和服务发现
