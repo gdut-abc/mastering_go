@@ -1,0 +1,10 @@
+# 目标
+service config是一个机制，这个机制允许服务的owners发布被所有他们的服务的client自动使用的参数。
+# 格式
+service config的格式是通过grpc.service_config.ServiceConfig 这个pb消息定义的。注意，当未来新的功能引入的时候，可能会加入新的字段。
+# 架构
+service config是和一个server的名字相关联的。当名字解析器插件被请求以解析一个特定的server名的时候，将会返回解析后的地址和service config。
+
+名字解析器以JSON形式返回service config到gRPC客户端。特定的解析器实现决定了service config存储的位置和格式。如果解析器实现以pb形式获取到service config，则必须将其转换成JSON（使用普通的PB到JSON的转换规则）。如果一个解析器实现获取到的是已经是JSON形式的service config，则可以直接返回。
+
+
