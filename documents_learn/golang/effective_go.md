@@ -1,3 +1,31 @@
+# 名字
+
+名字在Golang中和其他语言中一样重要。甚至有语意上的影响：在一个包外的名字可见性取决于是否第一个字符是大写。
+
+## 包名
+
+
+
+## Getter
+
+Go并不给getter和setter提供自动支持。你自己提供也没有什么问题，通常这么做也是合适的。但是，将Get放到getter的名字中既不是习惯用法，也不必要。假如你有一个叫做owner的字段（小写的，所以不是exported字段），getter方法应该叫做Owner(大写的，导出字段)，而非GetOwner。导出字段使用大写的名字提供了一种hook机制，这种hook机制可以将方法名和字段区分开。如果需要setter函数，名字为SetOwner。两个名字在实践中都读起来很好:
+
+```golang
+owner := obj.Owner()
+if owner != user {
+    obj.SetOwner(user)
+}
+```
+
+## 接口名
+
+按照惯例，单方法的接口用方法名称加上一个-er后缀或类似的修饰名来构造一个代理名词：Reader，Writer，Formatter，CloseNotifier等。
+
+有很多这种名称，遵守这些名称以及他们中的函数名非常有生产力。Read, Write, Close, Flush, String等等都有规范的签名和含义。为了避免混淆，除非你的方法真的有相同的签名和含义，否则不要给你的方法名成那种名字。相反，如果您的类型实现的方法的含义与熟知类型上的方法的含义相同，则为其赋予相同的名称和签名；调用您的字符串转换器方法String而不是ToString。
+
+## 混合大小写
+在golang的习惯中，写多个单词的名字时，使用`MixedCaps`或者`mixedCaps`而不是用下划线。
+
 # 控制结构
 
 ## switch
