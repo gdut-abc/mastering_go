@@ -248,3 +248,5 @@ if viper.GetBool("verbose") {
 ```
 
 ## 访问嵌套key
+
+访问方法也接收
